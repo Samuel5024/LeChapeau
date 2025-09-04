@@ -266,12 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff9f98e805de2348818d6eb2d3b94d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScreen: {fileID: 0}
-  lobbyScreen: {fileID: 0}
-  createRoomButton: {fileID: 0}
-  joinRoomButton: {fileID: 0}
-  playerListText: {fileID: 0}
-  startGameButton: {fileID: 0}
+  mainScreen: {fileID: 135949400}
+  lobbyScreen: {fileID: 547509019}
+  createRoomButton: {fileID: 836594308}
+  joinRoomButton: {fileID: 1362420734}
+  playerListText: {fileID: 1323296846}
+  startGameButton: {fileID: 595696071}
 --- !u!4 &320886603
 Transform:
   m_ObjectHideFlags: 0
