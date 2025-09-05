@@ -355,6 +355,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339141f6114069241bb16a173ccf6a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEnded: 0
+  timeToWin: 15
+  invincibleDuration: 0.5
+  playerPrefabLocation: Player
+  spawnPoints:
+  - {fileID: 1110807088}
+  - {fileID: 1088962003}
+  - {fileID: 26619311}
+  - {fileID: 969002941}
+  - {fileID: 1536895113}
+  players: []
+  playerWithHat: 0
 --- !u!4 &869950386
 Transform:
   m_ObjectHideFlags: 0

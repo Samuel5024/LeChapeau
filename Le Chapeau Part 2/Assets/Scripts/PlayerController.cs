@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     public Rigidbody rig;
     public Player photonPlayer;
 
-    public object photonView { get; internal set; }
 
     //called when the player object is instantiated
     [PunRPC]
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if (id == 1)
             GameManager.instance.GiveHat(id, true);
         //if this isn't our local player, disable all physics that's controlled by the user and sycned to all other clients
-        if (PhotonView.isMine)
+        if (photonView.IsMine)
                 rig.isKinematic = true;
     }
 
@@ -97,6 +96,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     public void SetHat(bool hasHat)
     {
         hatObject.SetActive(hasHat);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(curHatTime);
+        }
+        else if (stream.IsReading)
+        {
+            curHatTime = (float)stream.ReceiveNext();
+        }
     }
 
     void OnCollisionEnter(Collision collision)

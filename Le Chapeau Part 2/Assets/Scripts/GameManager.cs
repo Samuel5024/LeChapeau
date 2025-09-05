@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviourPunCallbacks //change inherited class
 
     //called when a player hits the hatted player - giving them the hat
     [PunRPC]
-    public void GiveHat(int playerId, bool intitialGive)
+    public void GiveHat(int playerId, bool initialGive)
     {
         //remove the hat from the currently hatted player
         if (!initialGive)
