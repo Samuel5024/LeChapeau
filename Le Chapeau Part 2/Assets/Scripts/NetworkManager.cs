@@ -10,8 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Awake()
     {                               
         if (instance != null && instance != this) //if an instance already exists
-                                                  //and it's not this one- destroy us
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);          ////and it's not this one- destroy us
         else
         {
             instance = this; //set the instance
@@ -45,7 +44,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Master Server"); //CreateRoom("testroom");
+        Debug.Log("Connected to master server"); //CreateRoom("testroom");
     }
 
     public override void OnCreatedRoom()

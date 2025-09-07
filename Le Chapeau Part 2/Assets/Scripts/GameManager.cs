@@ -102,8 +102,10 @@ public class GameManager : MonoBehaviourPunCallbacks //change inherited class
     {
         gameEnded = true;
         PlayerController player = GetPlayer(playerId);
+        
         //set the UI to show who's won
-
+        GameUI.instance.SetWinText(player.photonPlayer.NickName);
+        
         Invoke("GoBackToMenu", 3.0f);
     }
 
