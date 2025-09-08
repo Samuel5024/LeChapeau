@@ -32,12 +32,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinRoom(roomName);
     }
-                
-    [PunRPC] //changes scene using Photon's system
-             //this is an RPC because when the host starts the game,
-             //they will tell everyone else in the room to call this function
 
-    public void ChangeScene (string sceneName)
+    //changes scene using Photon's system
+    //this is an RPC because when the host starts the game,
+    //they will tell everyone else in the room to call this function
+    [PunRPC]
+    public void ChangeScene(string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName);
     }

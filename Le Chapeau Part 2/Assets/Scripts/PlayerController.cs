@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if (id == 1)
             GameManager.instance.GiveHat(id, true);
         //if this isn't our local player, disable all physics that's controlled by the user and sycned to all other clients
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
                 rig.isKinematic = true;
     }
 
