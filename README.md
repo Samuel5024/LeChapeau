@@ -1,4 +1,4 @@
-# LeChapeau++  
+# LeChapeau  
 This is a modified version of the video game built following the  
 lessons of Daniel Buckly in "Intro to Multiplayer Game Development".  
   
