@@ -66,12 +66,13 @@ public class GameManager : MonoBehaviourPunCallbacks //change inherited class
 
     public PlayerController GetPlayer(int playerId)
     {
-        return players.First(x => x.id == playerId);
+        //searches for plaeyer with the given id and returns null if player does not exist
+        return players.FirstOrDefault(x => x != null && x.id == playerId); 
     }
 
     public PlayerController GetPlayer(GameObject playerObject)
     {
-        return players.First(x => gameObject == playerObject);
+        return players.FirstOrDefault(x => x != null && x.gameObject == playerObject);
     }
 
     //called when a player hits the hatted player - giving them the hat
@@ -98,10 +99,16 @@ public class GameManager : MonoBehaviourPunCallbacks //change inherited class
     }
 
     [PunRPC]
-    void WinGame(int playerId)
+    public void WinGame(int playerId)
     {
         gameEnded = true;
         PlayerController player = GetPlayer(playerId);
+
+        if (player == null)
+        {
+            Debug.LogError($"WinGame called but no player with id  {playerId} exists!");
+            return;
+        }
         
         //set the UI to show who's won
         GameUI.instance.SetWinText(player.photonPlayer.NickName);
@@ -113,13 +120,5 @@ public class GameManager : MonoBehaviourPunCallbacks //change inherited class
     {
         PhotonNetwork.LeaveRoom();
         NetworkManager.instance.ChangeScene("Menu");
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
