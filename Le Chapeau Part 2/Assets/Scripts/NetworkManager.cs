@@ -17,11 +17,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         instance = this;
-<<<<<<< Updated upstream
         DontDestroyOnLoad(gameObject); //persists across scenes
-=======
-        DontDestroyOnLoad(gameObject); 
->>>>>>> Stashed changes
     }
     
     private void Start()
