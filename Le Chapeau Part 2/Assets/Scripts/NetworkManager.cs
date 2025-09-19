@@ -8,19 +8,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static NetworkManager instance; //instance
 
     private void Awake()
-    {                               
-        if (instance != null && instance != this) //if an instance already exists
-            gameObject.SetActive(false);          ////and it's not this one- destroy us
-        else
+    {    
+        //check if an instance already exists and its not THIS one
+        if(instance != null && instance != this)
         {
-            instance = this; //set the instance
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject); //kill duplicate
+            return;             
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); //persists across scenes
     }
     
     private void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        //only connect to Photon if not already connected
+        if(!PhotonNetwork.IsConnected)
+            PhotonNetwork.ConnectUsingSettings();
+
     }
 
     public void CreateRoom(string roomName)
